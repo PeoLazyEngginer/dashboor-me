@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio 2025 — SecondDiablosa</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark: #030712;
+      --bg-panel: rgba(15, 23, 42, 0.6);
+      --neon-cyan: #00f3ff;
+      --neon-purple: #bc13fe;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border-glow: rgba(0, 243, 255, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* ── CYBER BODY & BACKGROUND ── */
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Latar Belakang Grid Masa Depan */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background-image: 
+        linear-gradient(var(--border-glow) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-glow) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.15;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Efek Cahaya Ambient di Background */
+    .ambient-glow {
+      position: fixed;
+      top: 20%; left: 10%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(188, 19, 254, 0.15) 0%, transparent 70%);
+      filter: blur(50px);
+      z-index: -1;
+    }
+    .ambient-glow.right {
+      top: 60%; left: auto; right: 10%;
+      background: radial-gradient(circle, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAVIGASI ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      height: 70px;
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-glow);
+      box-shadow: 0 4px 30px rgba(0, 243, 255, 0.1);
+    }
+
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px var(--neon-cyan);
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--neon-cyan);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 8px var(--neon-cyan);
+    }
+
+    .nav-links a:hover { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── HERO SECTION ── */
+    #hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+      text-align: center;
+      padding: 0 5%;
+      position: relative;
+    }
+
+    .hero-glitch {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--text-main);
+      position: relative;
+      margin-bottom: 10px;
+      letter-spacing: 4px;
+    }
+
+    .hero-glitch::before {
+      content: 'SECONDD';
+      position: absolute;
+      left: -4px;
+      text-shadow: 2px 0 var(--neon-cyan);
+      z-index: -1;
+    }
+
+    .hero-glitch span {
+      color: var(--neon-cyan);
+      -webkit-text-stroke: 0;
+      text-shadow: 0 0 20px var(--neon-cyan);
+    }
+
+    .hero-subtitle {
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hud-box {
+      border: 1px solid var(--border-glow);
+      background: var(--bg-panel);
+      backdrop-filter: blur(8px);
+      padding: 15px 40px;
+      border-radius: 4px;
+      box-shadow: inset 0 0 20px rgba(0, 243, 255, 0.05);
+      position: relative;
+    }
+
+    /* Sudut ala HUD Sci-Fi */
+    .hud-box::before, .hud-box::after {
+      content: ''; position: absolute; width: 10px; height: 10px; border: 2px solid var(--neon-cyan);
+    }
+    .hud-box::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+    .hud-box::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+    .hud-box p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .scroll-cue {
+      margin-top: 60px;
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: pulse 2s infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .scroll-cue::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--neon-cyan), transparent);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(5px); }
+    }
+
+    /* ── PROJECTS ── */
+    #projects {
+      padding: 100px 5%;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px; left: 50%; transform: translateX(-50%);
+      width: 60%; height: 3px;
+      background: var(--neon-purple);
+      box-shadow: 0 0 10px var(--neon-purple);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: var(--bg-panel);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Efek Hover Futuristik pada Kartu */
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 15px 30px rgba(0, 243, 255, 0.15), 0 0 15px rgba(0, 243, 255, 0.2) inset;
+      z-index: 10;
+    }
+
+    .project-card img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      filter: grayscale(30%) contrast(120%);
+      transition: filter 0.3s;
+    }
+
+    .project-card:hover img {
+      filter: grayscale(0%) contrast(100%);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content p {
+      font-size: 1rem;
+      color: var(--text-main);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 100px 5%;
+      text-align: center;
+    }
+
+    .contact-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, rgba(15,23,42,0.8), rgba(3,7,18,0.9));
+      border: 1px solid var(--neon-purple);
+      border-radius: 12px;
+      padding: 50px 40px;
+      box-shadow: 0 0 30px rgba(188, 19, 254, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Garis pindai (Scanline effect) */
+    .contact-card::before {
+      content: ''; position: absolute; top: -100%; left: 0; right: 0; height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(188, 19, 254, 0.1), transparent);
+      animation: scan 4s linear infinite;
+    }
+
+    @keyframes scan {
+      0% { top: -100%; }
+      100% { top: 100%; }
+    }
+
+    .contact-card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .contact-card p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 35px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cyber-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: transparent;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--neon-cyan);
+      border: 1px solid var(--neon-cyan);
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      z-index: 1;
+    }
+
+    .cyber-btn::before {
+      content: '';
+      position: absolute; top: 0; left: 0; width: 0; height: 100%;
+      background: var(--neon-cyan);
+      z-index: -1;
+      transition: width 0.3s ease;
+    }
+
+    .cyber-btn:hover {
+      color: var(--bg-dark);
+      box-shadow: 0 0 20px var(--neon-cyan);
+    }
+
+    .cyber-btn:hover::before { width: 100%; }
+
+    .cyber-btn.alt {
+      color: var(--neon-purple); border-color: var(--neon-purple);
+    }
+    .cyber-btn.alt::before { background: var(--neon-purple); }
+    .cyber-btn.alt:hover { color: white; box-shadow: 0 0 20px var(--neon-purple); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #02040a;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 30px 5%;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    footer span { color: var(--neon-cyan); font-family: 'Orbitron', sans-serif; }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+  <div class="ambient-glow right"></div>
+
+  <nav>
+    <div class="nav-logo">SD_SYS</div>
+    <ul class="nav-links">
+      <li><a href="#projects">// Proyek</a></li>
+      <li><a href="#contact">// Kontak</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-glitch">SECONDD<span>IABLOSA</span></div>
+    <div class="hero-subtitle">CIVIL ENGINEERING</div>
+    
+    <div class="hud-box">
+      <p>Infrastruktur Futuristik & Rekayasa Struktural</p>
+    </div>
+    
+    <div class="scroll-cue">Inisiasi Sistem &darr;</div>
+  </section>
+
+  <section id="projects">
+    <div class="section-title reveal">
+      <h2>Database Proyek</h2>
+    </div>
+
+    <div class="photo-grid">
+      <div class="project-card reveal">
+        <img src="Peta Kerawanan Banjir Rob.png" alt="Peta Kerawanan Banjir Rob" onerror="this.src='https://via.placeholder.com/800x450/0f172a/00f3ff?text=DATA+NOT+FOUND'" />
+        <div class="card-content">
+          <p>Peta Kerawanan Banjir Rob Kecamatan Denpasar Selatan, Bali.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <img src="Peta Ketinggian Tanah.png" alt="Peta Ketinggian Tanah" onerror="this.src='https://via.placeholder.com/800x450/0f172a/00f3ff?text=DATA+NOT+FOUND'" />
+        <div class="card-content">
+          <p>Peta Ketinggian Tanah (Lahan) Kecamatan Denpasar Selatan, Bali.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <img src="Peta Kemiringan Lereng.png" alt="Peta Kemiringan Lereng" onerror="this.src='https://via.placeholder.com/800x450/0f172a/00f3ff?text=DATA+NOT+FOUND'" />
+        <div class="card-content">
+          <p>Peta Kemiringan Tanah Kecamatan Denpasar Selatan, Bali.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <img src="OUTPUT SURFER BATIMETRI.png" alt="Batimetri Laut Natuna" onerror="this.src='https://via.placeholder.com/800x450/0f172a/00f3ff?text=DATA+NOT+FOUND'" />
+        <div class="card-content">
+          <p>Survei Kontur Batimetri Laut Natuna, Kepulauan Riau.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <img src="Analisis Potensi Banjir Jakarta Utara 2016-2024.png" alt="Potensi Banjir Jakarta Utara" onerror="this.src='https://via.placeholder.com/800x450/0f172a/00f3ff?text=DATA+NOT+FOUND'" />
+        <div class="card-content">
+          <p>Peta Analisis Potensi Banjir Jakarta Utara 2016-2024.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <img src="Peta Penggunaan Lahan.png" alt="Peta Penggunaan Lahan" onerror="this.src='https://via.placeholder.com/800x450/0f172a/00f3ff?text=DATA+NOT+FOUND'" />
+        <div class="card-content">
+          <p>Peta Penggunaan Lahan Kecamatan Denpasar Selatan, Bali.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-card reveal">
+      <h2>Buka Saluran Komunikasi</h2>
+      <p>Sistem siap menerima transmisi data. Mari berkolaborasi.</p>
+      <div class="contact-links">
+        <a href="https://discordapp.com/users/@diablosa24" class="cyber-btn">Discord</a>
+        <a href="https://www.linkedin.com" class="cyber-btn alt">LinkedIn</a>
+        <a href="https://www.instagram.com/ramadhangrh_" class="cyber-btn">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Hak Cipta &copy; 2025 | Sistem Inti <span>SECONDDLABLOSA</span>
+  </footer>
+
+  <script>
+    // Intersection Observer untuk animasi scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 100);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Efek cahaya (glow) mengikuti mouse pada kartu
+    const cards = document.querySelectorAll('.project-card');
+    
+    document.addEventListener('mousemove', (e) => {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Mengaplikasikan efek gradient radial yang mengikuti koordinat kursor di atas kartu
+        card.style.background = `
+          radial-gradient(
+            800px circle at ${x}px ${y}px, 
+            rgba(0, 243, 255, 0.06),
+            rgba(15, 23, 42, 0.6) 40%
+          )
+        `;
+      });
+    });
+    
+    // Reset background saat kursor meninggalkan layar
+    cards.forEach(card => {
+      card.addEventListener('mouseleave', () => {
+        card.style.background = 'rgba(15, 23, 42, 0.6)';
+      });
+    });
+  </script>
+</body>
+</html>
